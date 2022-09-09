@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectCustomState } from 'src/app/core/store';
 
 @Component({
   selector: 'app-navbar',
   template: `
-    <p>
-      navbar works!
-    </p>
+    <div class="navbar">
+      <app-menu-icon></app-menu-icon>
+      {{ ($mainMenuIsOpen | async).mainMenuIsOpen }}
+    </div>
   `,
-  styles: [
-  ]
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  $mainMenuIsOpen: Observable<any> = this.store.select<any>(selectCustomState);
+  constructor(private store: Store) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,0 +1,27 @@
+@mixin hideScrollBar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@mixin deskHover {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin touchHover {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+@mixin add-css-variables($data) {
+  :root {
+    @each $name, $value in $data {
+      --#{$name}: #{$value};
+    }
+  }
+}

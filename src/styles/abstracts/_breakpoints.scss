@@ -1,0 +1,60 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+// if you wanna add default value ($breakpoint: map-get($grid-breakpoints, 'xs')
+@mixin min-width($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get($grid-breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin max-width($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media screen and (max-width: (map-get($grid-breakpoints, $breakpoint) - 1)) {
+      @content;
+    }
+  }
+}
+
+@mixin only($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    $grid-breakpoints-length: length($grid-breakpoints);
+    $map-list: map-keys($grid-breakpoints);
+
+    @if index($map-list, $breakpoint) == $grid-breakpoints-length {
+      @include min-width($breakpoint) {
+        @content;
+      }
+    } @else {
+      $next-breakpoint-index: (index($map-list, $breakpoint) + 1);
+      $next-breakpoint-key: nth($map-list, $next-breakpoint-index);
+
+      @media screen and (min-width: map-get($grid-breakpoints, $breakpoint)) and (max-width: (map-get($grid-breakpoints, $next-breakpoint-key) - 1)) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin between($min-breakpoint, $max-breakpoint) {
+  @if map-has-key($grid-breakpoints, $min-breakpoint) and
+    map-has-key($grid-breakpoints, $max-breakpoint)
+  {
+    @media screen and (min-width: map-get($grid-breakpoints, $min-breakpoint)) and (max-width: (map-get($grid-breakpoints, $max-breakpoint) - 1)) {
+      @content;
+    }
+  }
+}
+
+// @include min-width('xs') { ... }
+// @include max-width('xl') { ... }
+// @include only('xs') { ... }
+// @include between('xs', 'xl') { ... }

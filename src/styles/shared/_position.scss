@@ -1,0 +1,16 @@
+.grid-center {
+  display: grid;
+  place-content: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.absolute-t0-l0 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

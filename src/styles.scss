@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./styles/reset";
+
+// [ ] TODO check if change something when compiled
+// @use "./styles/abstracts" as *;
+
+@use "./styles/shared/position";
+
+@use "./styles/variables/color";
+@use "./styles/variables/custom";
+@use "./styles/variables/font";

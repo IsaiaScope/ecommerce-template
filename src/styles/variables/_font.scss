@@ -1,0 +1,53 @@
+@use "../abstracts" as *;
+
+:root {
+  --t-size-alpha: 1em;
+  --t-scale-ratio-alpha: 1.25;
+
+  --t-xs-alpha: var(--t-size-alpha);
+  --t-sm-alpha: calc(var(--t-xs-alpha) * var(--t-scale-ratio-alpha));
+  --t-md-alpha: calc(var(--t-sm-alpha) * var(--t-scale-ratio-alpha));
+  --t-lg-alpha: calc(var(--t-md-alpha) * var(--t-scale-ratio-alpha));
+  --t-xl-alpha: calc(var(--t-lg-alpha) * var(--t-scale-ratio-alpha));
+  --t-xxl-alpha: calc(var(--t-xl-alpha) * var(--t-scale-ratio-alpha));
+
+  @include max-width("sm") {
+  }
+  @include between("sm", "md") {
+    --t-size-alpha: 3em;
+  }
+  @include between("md", "lg") {
+    --t-size-alpha: 5em;
+  }
+  @include between("lg", "xl") {
+    --t-size-alpha: 8em;
+  }
+  @include between("xl", "xxl") {
+    --t-size-alpha: 1em;
+  }
+  @include min-width("xxl") {
+    --t-size-alpha: 1em;
+  }
+}
+
+// $scale-naming: (1, 2, 3, 4, 5, 6);
+// $custom: (
+//   t-size-alpha: 1em,
+//   t-scale-ratio-alpha: 1.25,
+// );
+// @mixin create-scaling-css-variables(
+//   $variable-name,
+//   $variable-value,
+//   $scaling: $scale-naming
+// ) {
+//   :root {
+//     @each $number in $scaling {
+//       --#{$variable-name}-#{$number}: #{$variable-value};
+//     }
+//   }
+// }
+// @include add-css-variables($custom);
+// @include create-scaling-css-variables(
+//   "t-size-alpha",
+//   map-get($custom, "t-size-alpha")
+// );
