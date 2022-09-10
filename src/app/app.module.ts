@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './shared/components/components.module';
+
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './core/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { environment as env } from 'src/environments/environment';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +24,8 @@ import { environment as env } from 'src/environments/environment';
       metaReducers,
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: env.production }),
+    AngularFireModule.initializeApp(env.firebaseConfig),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

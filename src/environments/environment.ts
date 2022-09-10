@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyBFLY8JC4G9vfPzvM3EsLOGYqO_ln_5XmQ',
+    authDomain: 'e-commerce-food-b8f9f.firebaseapp.com',
+    projectId: 'e-commerce-food-b8f9f',
+    storageBucket: 'e-commerce-food-b8f9f.appspot.com',
+    messagingSenderId: '755536121721',
+    appId: '1:755536121721:web:c268e0bdcb89024f71a9a8',
+    measurementId: 'G-N1Q7ZX5YNK',
+  },
 };
 
 /*
