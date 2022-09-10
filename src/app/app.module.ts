@@ -13,6 +13,7 @@ import { environment as env } from 'src/environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: env.production }),
     AngularFireModule.initializeApp(env.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
