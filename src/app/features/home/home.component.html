@@ -1,7 +1,15 @@
 <!-- <app-card></app-card>
 <app-card></app-card> -->
 <!-- {{$data | async | json}} -->
+
+<div *ngFor="let category of categoriesKeys">
+  <app-category-card [config]="categories[category]"></app-category-card>
+</div>
 <br><br>
 <button (click)="onClick()">BEPPE</button>
 <input type="file" (change)="uploadFile($event)">
-<img [src]="$imgs | async" />
+<!-- <img [src]="$imgs | async" /> -->
+
+<!-- {{$imgs | async | json}} -->
+
+<app-svg-icon></app-svg-icon>
